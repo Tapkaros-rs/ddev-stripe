@@ -1,0 +1,17 @@
+#ddev-generated
+# Simple template to demonstrate addon-template
+services:
+  stripe:
+    container_name: ddev-${DDEV_SITENAME}-stripe
+    image: stripe/stripe-cli
+    networks: [default, ddev_default]
+    restart: "no"
+    command: listen --api-key "${STRIPE_API_KEY}" --forward-to "${WEBHOOK_SERVICE_NAME}":"${WEBHOOK_SERVICE_PORT}"/stripe/webhook
+    environment:
+      STRIPE_API_KEY: ${STRIPE_API_KEY}
+      STRIPE_DEVICE_NAME: ${STRIPE_DEVICE_NAME}
+      WEBHOOK_SERVICE_NAME: ${WEBHOOK_SERVICE_NAME}
+      WEBHOOK_SERVICE_PORT: ${WEBHOOK_SERVICE_PORT}
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT

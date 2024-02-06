@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#ddev-generated
+## Description: Configure Stripe
+## Usage: stripe-config
+## Example: "stripe-config"
+
+D=${0%/*}
+[ "$D" = x"$0" ] && D=.
+readonly D
+
+# shellcheck source=scripts/post-install.bash
+source "$D"/../../scripts/post-install.bash
