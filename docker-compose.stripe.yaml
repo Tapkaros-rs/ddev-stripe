@@ -5,7 +5,7 @@ services:
     container_name: ddev-${DDEV_SITENAME}-stripe
     image: stripe/stripe-cli
     networks: [default, ddev_default]
-    restart: "no"
+    restart: "always"
     env_file:
       - .env
     command: listen --api-key "${STRIPE_API_KEY}" --forward-to "${WEBHOOK_SERVICE_NAME}":"${WEBHOOK_SERVICE_PORT}"/"${WEBHOOK_ENDPOINT}"
